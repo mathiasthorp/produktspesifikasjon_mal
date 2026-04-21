@@ -1,0 +1,50 @@
+@startuml
+title Aktsomhetskart svakhetssoner i fjell - OGC API Features - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  class "01) DekningSvakhetssonerFjell" as 01__DekningSvakhetssonerFjell <<featureType>> {
+    + objid [0..1] : Integer
+    + objtype [0..1] : CharacterString
+    + opphav [1..1] : CharacterString
+
+    ..Geometri..
+    + geometry [1] : GM_Surface
+  }
+
+  class "02) SvakheterFjellAktsomhetFlate" as 02__SvakheterFjellAktsomhetFlate <<featureType>> {
+    + objid [0..1] : Integer
+    + objtype [0..1] : CharacterString
+    + datauttaksdato [1..1] : DateTime
+    + opphav [1..1] : CharacterString
+    + informasjon [0..1] : CharacterString
+    + svakhetFjellSannsynlighet [1..1] : CharacterString
+    + svakhetFjellSannsynlighet_Tekst [1..1] : CharacterString
+
+    ..Geometri..
+    + geometry [1] : GM_Surface
+  }
+}
+
+@enduml
