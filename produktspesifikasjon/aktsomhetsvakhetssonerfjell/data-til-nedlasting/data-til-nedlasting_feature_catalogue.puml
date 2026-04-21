@@ -1,0 +1,45 @@
+@startuml
+title Aktsomhetskart svakhetssoner i fjell - Data til nedlasting - Objekttyper
+
+skinparam backgroundColor #F5F5F5
+skinparam shadowing false
+skinparam RoundCorner 6
+skinparam ArrowColor #6C8198
+skinparam class {
+  BackgroundColor #FBF2E8
+  BorderColor #9C8578
+  FontColor #2D201A
+  HeaderBackgroundColor #EFE1D6
+  HeaderFontColor #2D201A
+  AttributeIconSize 0
+}
+skinparam note {
+  BackgroundColor #FFFFFF
+  BorderColor #6C8198
+  FontColor #2D201A
+}
+skinparam stereotypeCBackgroundColor #EAD9CE
+skinparam stereotypeCBorderColor #9C8578
+skinparam stereotypeCFontColor #2D201A
+
+package "Objekttyper" {
+
+  class SvakheterFjellAktsomhetFlate <<featureType>> {
+    + svakhetFjellSannsynlighet [1] : SvakhetFjellSannsynlighet
+    + svakhetFjellSannsynlighet_Tekst [1] : CharacterString
+  }
+
+  abstract class FellesegenskaperAktsomhetSvakhetssonerFjell <<featureType>> {
+    + datauttaksdato [1] : Date
+    + informasjon [0..*] : CharacterString
+    + opphav [1] : CharacterString
+  }
+
+  class DekningSvakhetssonerFjell <<featureType>> {
+    + opphav [1] : CharacterString
+  }
+}
+
+  FellesegenskaperAktsomhetSvakhetssonerFjell <|-- SvakheterFjellAktsomhetFlate
+
+@enduml

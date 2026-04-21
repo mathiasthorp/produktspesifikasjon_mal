@@ -1,0 +1,96 @@
+[
+  {
+    "name": "SvakheterFjellAktsomhetFlate",
+    "description": "områder hvor det er sannsynlig eller mindre sannsynlig at det forekommer svakhetssoner i fjellet",
+    "attributes": [
+      {
+        "name": "svakhetFjellSannsynlighet",
+        "type": "SvakhetFjellSannsynlighet",
+        "description": "sannsynlighet for at det skal forekomme svakhetssoner i fjell",
+        "cardinality": "1",
+        "valueDomain": {
+          "listedValues": [
+            {
+              "value": "Ikke påvist svakhetssoner i fjell",
+              "label": "Områder uten påviste svakhetssoner"
+            },
+            {
+              "value": "Mindre sannsynlige svakhetssoner i fjell",
+              "label": "Områder med lav sannsynlighet for svakhetssoner"
+            },
+            {
+              "value": "Sannsynlige svakhetssoner i fjell",
+              "label": "Områder med høyere sannsynlighet for\nsvakhetssoner"
+            },
+            {
+              "value": "Usikre områder",
+              "label": "Områder med usikker tolkning"
+            }
+          ],
+          "definition": "klasser basert på sannsynlighet for at det skal forekomme svakhetssoner i fjell",
+          "asDictionary": "false",
+          "codeList": "http://skjema.geonorge.no/legg_inn_riktig_url"
+        }
+      },
+      {
+        "name": "svakhetFjellSannsynlighet_Tekst",
+        "type": "CharacterString",
+        "description": "sannsynlighet for at det skal forekomme svakhetssoner i fjell",
+        "cardinality": "1"
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [
+        "FellesegenskaperAktsomhetSvakhetssonerFjell"
+      ],
+      "associations": []
+    }
+  },
+  {
+    "name": "FellesegenskaperAktsomhetSvakhetssonerFjell",
+    "description": "abstrakt objekttype som bærer en rekke egenskaper som er fagområde-uavhengige og kan benyttes for alle objekttyper\n\nMerknad:\nSpesielt i produktspesifikasjonsarbeid vil en velge egenskaper og avgrensningslinjer fra denne klassen.",
+    "attributes": [
+      {
+        "name": "datauttaksdato",
+        "type": "DateTime",
+        "description": "dato for uttak fra en database\n\nMerknad:\nSkiller seg fra Kopidato ved at en ikke skiller på om det er uttak fra en originaldatabase eller en kopidatabase.",
+        "cardinality": "1"
+      },
+      {
+        "name": "informasjon",
+        "type": "CharacterString",
+        "description": "generell opplysning\n\nMerknad:\nmulighet til å legge inn utfyllende informasjon om objektet",
+        "cardinality": "0..*"
+      },
+      {
+        "name": "opphav",
+        "type": "CharacterString",
+        "description": "referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde\n\nMerknad:\nKan også beskrive navn på person og årsak til oppdatering",
+        "cardinality": "1"
+      }
+    ],
+    "abstract": true,
+    "relationships": {
+      "inheritance": [],
+      "associations": []
+    }
+  },
+  {
+    "name": "DekningSvakhetssonerFjell",
+    "description": "dekningsområde for datasettet Aktsomhetskart svakhetssoner i fjell",
+    "attributes": [
+      {
+        "name": "opphav",
+        "type": "CharacterString",
+        "description": "referanse til opphavsmaterialet, kildematerialet, organisasjons/publiseringskilde\n\nMerknad:\nKan også beskrive navn på person og årsak til oppdatering",
+        "cardinality": "1"
+      }
+    ],
+    "abstract": false,
+    "relationships": {
+      "inheritance": [],
+      "associations": []
+    }
+  }
+]
